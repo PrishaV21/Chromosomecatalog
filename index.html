@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>23 Chromosomes Info</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    .chromosome-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .chromosome-btn {
+      padding: 15px;
+      background-color: #0073e6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .chromosome-btn:hover {
+      background-color: #005bb5;
+    }
+    #info-box {
+      margin-top: 30px;
+      background-color: #ffffff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Explore the 23 Human Chromosomes</h1>
+  <div class="chromosome-grid">
+    <script>
+      for (let i = 1; i <= 22; i++) {
+        document.write(`<button class="chromosome-btn" onclick="showInfo(${i})">Chromosome ${i}</button>`);
+      }
+      document.write(`<button class="chromosome-btn" onclick="showInfo('X')">Chromosome X</button>`);
+      document.write(`<button class="chromosome-btn" onclick="showInfo('Y')">Chromosome Y</button>`);
+    </script>
+  </div>
+
+  <div id="info-box">
+    <p>Click a chromosome to learn more about it.</p>
+  </div>
+
+  <script>
+    const chromosomeInfo = {
+      1: "Chromosome 1 is the largest human chromosome and contains over 2,000 genes.",
+      2: "Chromosome 2 is notable for a fusion event that differentiates humans from other primates.",
+      3: "Chromosome 3 plays a role in several neurological functions.",
+      4: "Chromosome 4 includes genes associated with Huntington's disease.",
+      5: "Chromosome 5 contains genes important in limb development.",
+      6: "Chromosome 6 is home to the major histocompatibility complex (MHC), critical for immunity.",
+      7: "Chromosome 7 carries the CFTR gene, mutations in which cause cystic fibrosis.",
+      8: "Chromosome 8 has genes related to brain development.",
+      9: "Chromosome 9 includes genes involved in blood type and certain cancers.",
+      10: "Chromosome 10 has tumor suppressor genes.",
+      11: "Chromosome 11 is associated with sickle cell disease and beta-thalassemia.",
+      12: "Chromosome 12 carries genes related to metabolism.",
+      13: "Chromosome 13 includes the BRCA2 gene, related to breast cancer risk.",
+      14: "Chromosome 14 has genes linked to Alzheimer's and other brain functions.",
+      15: "Chromosome 15 is involved in Prader-Willi and Angelman syndromes.",
+      16: "Chromosome 16 has genes for kidney development and function.",
+      17: "Chromosome 17 contains the BRCA1 gene, also related to breast cancer.",
+      18: "Chromosome 18 has genes associated with Edwards syndrome.",
+      19: "Chromosome 19 is gene-rich and involved in lipid metabolism.",
+      20: "Chromosome 20 is linked to type 2 diabetes and immune response.",
+      21: "Chromosome 21 is the smallest and associated with Down syndrome.",
+      22: "Chromosome 22 has roles in the immune system and brain development.",
+      X: "Chromosome X determines many female characteristics and carries numerous important genes.",
+      Y: "Chromosome Y determines male sex and includes genes for male development."
+    };
+
+    function showInfo(chrom) {
+      const infoBox = document.getElementById("info-box");
+      infoBox.innerHTML = `<h2>Chromosome ${chrom}</h2><p>${chromosomeInfo[chrom]}</p>`;
+    }
+  </script>
+</body>
+</html>
