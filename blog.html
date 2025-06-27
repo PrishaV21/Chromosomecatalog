@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prisha's Blog</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('chromo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+      text-shadow: 0 0 3px #000;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+    }
+    .blog-header-images {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .blog-header-images img {
+      width: 60px;
+      height: auto;
+    }
+    form {
+      margin-bottom: 30px;
+    }
+    input[type="text"], input[type="date"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .entry {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Prisha's Research and Thoughts on Chromosomes</h1>
+    <div class="blog-header-images">
+      <img src="https://img.icons8.com/ios-filled/100/dna-helix.png" alt="DNA 1"/>
+      <img src="https://img.icons8.com/ios-filled/100/dna-helix.png" alt="DNA 2"/>
+      <img src="https://img.icons8.com/ios-filled/100/dna-helix.png" alt="DNA 3"/>
+    </div>
+
+    <form onsubmit="addEntry(event)">
+      <label>Date:</label>
+      <input type="date" id="entryDate" required>
+      <label>Your Thoughts:</label>
+      <textarea id="entryText" placeholder="Write your research or thoughts here..." required></textarea>
+      <button type="submit">Add Entry</button>
+    </form>
+
+    <div id="entries"></div>
+  </div>
+
+  <script>
+    function addEntry(event) {
+      event.preventDefault();
+      const date = document.getElementById('entryDate').value;
+      const text = document.getElementById('entryText').value;
+
+      if (date && text) {
+        const entryDiv = document.createElement('div');
+        entryDiv.className = 'entry';
+        entryDiv.innerHTML = `<strong>Date:</strong> ${date}<br><p>${text}</p>`;
+        document.getElementById('entries').prepend(entryDiv);
+
+        // Clear inputs
+        document.getElementById('entryDate').value = '';
+        document.getElementById('entryText').value = '';
+      }
+    }
+  </script>
+</body>
+</html>
