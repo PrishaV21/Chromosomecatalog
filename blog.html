@@ -66,6 +66,11 @@
       margin-bottom: 20px;
       text-shadow: none;
     }
+    .tags {
+      margin-top: 5px;
+      font-size: 0.9em;
+      color: #444;
+    }
   </style>
 </head>
 <body>
@@ -80,6 +85,8 @@
     <form onsubmit="addEntry(event)">
       <label>Date:</label>
       <input type="date" id="entryDate" required>
+      <label>Tags (comma-separated):</label>
+      <input type="text" id="entryTags" placeholder="e.g. chromosome 5, trisomy">
       <label>Your Thoughts:</label>
       <textarea id="entryText" placeholder="Write your research or thoughts here..." required></textarea>
       <button type="submit">Add Entry</button>
@@ -89,22 +96,41 @@
   </div>
 
   <script>
+    const entryBox = document.getElementById("entries");
+
+    function loadEntries() {
+      const data = JSON.parse(localStorage.getItem("prishaBlog") || "[]");
+      entryBox.innerHTML = '';
+      data.reverse().forEach(entry => {
+        const div = document.createElement("div");
+        div.className = "entry";
+        div.innerHTML = "<strong>Date:</strong> " + entry.date +
+                        "<div class='tags'><strong>Tags:</strong> " + (entry.tags || 'None') + "</div>" +
+                        "<p>" + entry.text + "</p>";
+        entryBox.appendChild(div);
+      });
+    }
+
     function addEntry(event) {
       event.preventDefault();
       const date = document.getElementById('entryDate').value;
       const text = document.getElementById('entryText').value;
+      const tags = document.getElementById('entryTags').value;
 
       if (date && text) {
-        const entryDiv = document.createElement('div');
-        entryDiv.className = 'entry';
-        entryDiv.innerHTML = `<strong>Date:</strong> ${date}<br><p>${text}</p>`;
-        document.getElementById('entries').prepend(entryDiv);
+        const newEntry = { date, text, tags };
+        const existing = JSON.parse(localStorage.getItem("prishaBlog") || "[]");
+        existing.push(newEntry);
+        localStorage.setItem("prishaBlog", JSON.stringify(existing));
+        loadEntries();
 
-        // Clear inputs
         document.getElementById('entryDate').value = '';
         document.getElementById('entryText').value = '';
+        document.getElementById('entryTags').value = '';
       }
     }
+
+    window.onload = loadEntries;
   </script>
 </body>
 </html>

@@ -121,7 +121,10 @@
       div.className = 'chromosome-item';
       div.innerHTML = `
         <img src="https://img.icons8.com/ios-filled/100/dna-helix.png" alt="Chr ${ch}" onclick="showInfo('${ch}')">
-        <div style="margin-top: 5px;">Chr ${ch}</div>
+        <div style="margin-top: 5px;">Chr ${ch}<p style="text-align:center; margin-top: 20px;">
+  <a href="blog.html" style="color: #00f; font-size: 1.2em;">Visit Prisha's Blog</a>
+</p>
+</div>
       `;
       grid.appendChild(div);
     });
