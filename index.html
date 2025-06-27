@@ -6,13 +6,13 @@
   <title>The Blueprint</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: url('https://cdn.pixabay.com/photo/2017/08/30/07/52/dna-2691657_1280.jpg') no-repeat center center fixed;
+      background: url('chromo.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #ffffff;
-      text-shadow: 0 0 5px #000;
+      text-shadow: 0 0 3px #000;
     }
     .container {
       background-color: rgba(0, 0, 0, 0.6);
@@ -23,11 +23,10 @@
     h1 {
       text-align: center;
       font-size: 3em;
-      margin-bottom: 0.2em;
     }
     p.description {
       text-align: center;
-      font-size: 1.2em;
+      font-size: 1.3em;
       margin-bottom: 40px;
     }
     .chromosome-grid {
@@ -51,13 +50,26 @@
     .chromosome-item img:hover {
       transform: scale(1.1);
     }
-    #info-box {
-      background-color: #ffffff;
+    dialog {
+      background: #ffffff;
       color: #000000;
-      padding: 20px;
-      margin-top: 40px;
+      border: none;
       border-radius: 10px;
-      text-shadow: none;
+      padding: 20px;
+      width: 80%;
+      max-width: 500px;
+    }
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.8);
+    }
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
     }
   </style>
 </head>
@@ -66,13 +78,14 @@
     <h1>The Blueprint</h1>
     <p class="description">Learn about the function of each of the 23 chromosomes we possess and the mutations and diseases pertaining to each chromosome.</p>
 
-    <div class="chromosome-grid" id="chromosome-grid">
-    </div>
-
-    <div id="info-box">
-      <p>Click on a chromosome icon to view detailed information.</p>
-    </div>
+    <div class="chromosome-grid" id="chromosome-grid"></div>
   </div>
+
+  <dialog id="chromosomeDialog">
+    <button class="close-btn" onclick="document.getElementById('chromosomeDialog').close()">Close</button>
+    <h2 id="dialogTitle"></h2>
+    <p id="dialogContent"></p>
+  </dialog>
 
   <script>
     const chromosomeInfo = {
@@ -108,16 +121,15 @@
       div.className = 'chromosome-item';
       div.innerHTML = `
         <img src="https://img.icons8.com/ios-filled/100/dna-helix.png" alt="Chr ${ch}" onclick="showInfo('${ch}')">
-        <div>Chr ${ch}</div>
+        <div style="margin-top: 5px;">Chr ${ch}</div>
       `;
       grid.appendChild(div);
     });
 
     function showInfo(chrom) {
-      document.getElementById('info-box').innerHTML = `
-        <h2>Chromosome ${chrom}</h2>
-        <p>${chromosomeInfo[chrom]}</p>
-      `;
+      document.getElementById('dialogTitle').innerText = `Chromosome ${chrom}`;
+      document.getElementById('dialogContent').innerText = chromosomeInfo[chrom];
+      document.getElementById('chromosomeDialog').showModal();
     }
   </script>
 </body>
