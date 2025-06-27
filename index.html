@@ -16,59 +16,67 @@
       display: flex;
     }
 
-.menu-toggle {
-  display: none;
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  background-color: #007BFF;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  z-index: 1100;
-  cursor: pointer;
-}
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 220px;
-  background-color: rgba(0, 0, 0, 0.85);
-  padding: 20px;
-  box-sizing: border-box;
-  z-index: 1000;
-}
-.sidebar a {
-  display: block;
-  color: #00bfff;
-  font-size: 1.1em;
-  margin: 15px 0;
-  text-decoration: none;
-  padding: 5px;
-  border-radius: 5px;
-}
-.sidebar a:hover, .sidebar a.active {
-  background-color: #007BFF;
-  color: white;
-}
-@media screen and (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-  .sidebar {
-    display: none;
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .sidebar.open {
-    display: block;
-  }
-  .container {
-    margin-left: 0 !important;
-  }
-}
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      z-index: 1100;
+      cursor: pointer;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 220px;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 20px;
+      box-sizing: border-box;
+      z-index: 1000;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #00bfff;
+      font-size: 1.1em;
+      margin: 15px 0;
+      text-decoration: none;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    @media screen and (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .sidebar {
+        display: none;
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .sidebar.open {
+        display: block;
+      }
+
+      .main-content {
+        margin-left: 0 !important;
+      }
+    }
 
     .main-content {
       margin-left: 220px;
@@ -141,12 +149,14 @@
 </head>
 <body>
   <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+
   <div class="sidebar" id="sidebar">
     <a href="index.html" id="homeLink">🏠 Home</a>
     <a href="blog.html" id="blogLink">📝 Prisha's Blog</a>
     <a href="resume.html" id="resumeLink">📄 Resume</a>
     <a href="contact.html" id="contactLink">📬 Contact</a>
   </div>
+
   <div class="main-content">
     <h1>The Blueprint</h1>
     <p class="description">
@@ -154,7 +164,12 @@
     </p>
 
     <div class="chromosome-grid" id="chromosome-grid">
-      <!-- Chromosome items here (as in your original code) -->
+      <!-- Example Chromosome Items -->
+      <div class="chromosome-item" onclick="showInfo('1')">
+        <img src="chromosome1.png" alt="Chromosome 1" />
+        <p>Chromosome 1</p>
+      </div>
+      <!-- Repeat as needed for all 23 chromosomes -->
     </div>
 
     <dialog id="chromosomeDialog">
@@ -169,14 +184,21 @@
   <script>AOS.init();</script>
   <script>
     const chromosomeInfo = {
-      // your chromosomeInfo object here
+      // Add your chromosome info here, e.g.:
+      '1': 'Chromosome 1 is the largest human chromosome and contains over 2000 genes.',
+      // ...
     };
 
     function showInfo(chrom) {
       document.getElementById('dialogTitle').innerText = 'Chromosome ' + chrom;
-      document.getElementById('dialogContent').innerText = chromosomeInfo[chrom];
+      document.getElementById('dialogContent').innerText = chromosomeInfo[chrom] || 'Information not available.';
       document.getElementById('chromosomeDialog').showModal();
       document.getElementById('popupSound').play();
+    }
+
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
     }
   </script>
 </body>
