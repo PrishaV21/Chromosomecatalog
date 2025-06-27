@@ -45,10 +45,11 @@
       background: #ffffff;
       border-radius: 50%;
       padding: 10px;
-      transition: transform 0.2s;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     }
     .chromosome-item img:hover {
-      transform: scale(1.1);
+      transform: scale(1.2) rotate(5deg);
+      box-shadow: 0 0 15px rgba(0, 191, 255, 0.7);
     }
     dialog {
       background: #ffffff;
@@ -71,9 +72,108 @@
       padding: 5px 10px;
       border-radius: 5px;
     }
-  </style>
+  
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 200px;
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 20px;
+      box-sizing: border-box;
+      z-index: 1000;
+    }
+    .sidebar h2 {
+      color: #ffffff;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      display: block;
+      color: #00bfff;
+      font-size: 1.1em;
+      margin: 15px 0;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      margin-left: 220px;
+    }
+
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 220px;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 20px;
+      box-sizing: border-box;
+      z-index: 1000;
+    }
+    .sidebar h2 {
+      color: #ffffff;
+      font-size: 1.6em;
+      margin-bottom: 20px;
+    }
+    .sidebar a {
+      display: block;
+      color: #00bfff;
+      font-size: 1.1em;
+      margin: 15px 0;
+      text-decoration: none;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .sidebar a:hover, .sidebar a:focus, .sidebar a.active {
+      background-color: #007BFF;
+      color: white;
+    }
+    .container {
+      margin-left: 240px;
+    }
+    @media screen and (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .container {
+        margin-left: 0;
+        padding-top: 20px;
+      }
+    }
+
+</style>
 </head>
 <body>
+
+  <div class="sidebar">
+    <h2>Navigate</h2>
+    <a href="blog.html" id="blogLink">📝 Prisha's Blog</a>
+    <a href="#about" id="aboutLink">👩‍🔬 About</a>
+    <a href="#contact" id="contactLink">📬 Contact</a>
+  </div>
+  <script>
+    window.onload = function() {
+      const path = window.location.pathname;
+      const hash = window.location.hash;
+      if (hash.includes('about')) document.getElementById('aboutLink').classList.add('active');
+      else if (hash.includes('contact')) document.getElementById('contactLink').classList.add('active');
+    };
+  </script>
+
+
+  <div class="sidebar">
+    <h2>Navigate</h2>
+    <a href="blog.html">📝 Prisha's Blog</a>
+    <a href="#contact">📬 Contact</a>
+  </div>
+
   <div class="container">
     <h1>The Blueprint</h1>
     <p class="description">Learn about the function of each of the 23 chromosomes we possess and the mutations and diseases pertaining to each chromosome.</p>
