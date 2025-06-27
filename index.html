@@ -177,7 +177,19 @@
     <a href="resume.html" id="resumeLink">📄 Resume</a>
     <a href="contact.html" id="contactLink">📬 Contact</a>
   </div>
-
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById("sidebar");
+      menu.classList.toggle("open");
+    }
+    window.onload = function() {
+      const path = window.location.pathname;
+      if (path.includes('resume')) document.getElementById('resumeLink').classList.add('active');
+      else if (path.includes('contact')) document.getElementById('contactLink').classList.add('active');
+      else if (path.includes('blog')) document.getElementById('blogLink').classList.add('active');
+      else document.getElementById('homeLink').classList.add('active');
+    };
+  </script>
   <div class="container">
     <h1>The Blueprint</h1>
 
