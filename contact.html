@@ -32,6 +32,25 @@
     section {
       margin-top: 30px;
     }
+        .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #00bfff;
+    }
+    @keyframes fadeIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+    }
     .social-icons {
       margin-top: 30px;
       text-align: center;
