@@ -141,43 +141,60 @@
     </p>
   </section>
 
-  <section>
-    <h2>🧾 Chromosome Overview</h2>
-    <div class="chromosome-grid" id="chromosome-grid">
-      <!-- Example Chromosome Items -->
-      <div class="chromosome-item" onclick="showInfo('1')">
-        <img src="chromosome1.png" alt="Chromosome 1" />
-        <p>Chromosome 1</p>
-      </div>
-      <!-- Repeat similar blocks for Chromosomes 2–23 -->
-    </div>
-  </section>
+  <div class="chromosome-grid" id="chromosome-grid"></div>
+</div>
 
   <dialog id="chromosomeDialog">
     <button class="close-btn" onclick="document.getElementById('chromosomeDialog').close()">Close</button>
     <h2 id="dialogTitle"></h2>
     <p id="dialogContent"></p>
   </dialog>
-</div>
 
-<audio id="popupSound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.wav" preload="auto"></audio>
+  <script>
+    const chromosomeInfo = {
+      1: "Chromosome 1 is the largest and holds genes linked to Alzheimer's, breast cancer, and hearing loss.",
+      2: "Chromosome 2 contains genes involved in developmental delay and immune disorders.",
+      3: "Chromosome 3 plays roles in cancer suppression and retinal development.",
+      4: "Chromosome 4 is linked with Huntington’s disease and skeletal abnormalities.",
+      5: "Chromosome 5 contains genes associated with spinal muscular atrophy and cleft palate.",
+      6: "Chromosome 6 holds the MHC region vital for immune response and autoimmune diseases.",
+      7: "Chromosome 7 includes genes linked to cystic fibrosis and Williams syndrome.",
+      8: "Chromosome 8 affects brain development and immune system genes.",
+      9: "Chromosome 9 contains ABO blood group genes and those linked to bladder cancer.",
+      10: "Chromosome 10 harbors genes for insulin production and neurodevelopment.",
+      11: "Chromosome 11 is associated with sickle cell disease and Wilms tumor.",
+      12: "Chromosome 12 includes genes involved in growth and some forms of diabetes.",
+      13: "Chromosome 13 includes the BRCA2 gene and is linked to retinoblastoma.",
+      14: "Chromosome 14 carries genes associated with early-onset Alzheimer's.",
+      15: "Chromosome 15 is tied to Angelman and Prader-Willi syndromes.",
+      16: "Chromosome 16 involves genes for kidney disorders and autism.",
+      17: "Chromosome 17 includes BRCA1 and genes for neurological disorders.",
+      18: "Chromosome 18 is linked to Edwards syndrome and congenital abnormalities.",
+      19: "Chromosome 19 is rich in genes related to lipid metabolism and immune function.",
+      20: "Chromosome 20 contains genes influencing diabetes and epilepsy.",
+      21: "Chromosome 21, the smallest, causes Down syndrome when triplicated.",
+      22: "Chromosome 22 is linked with DiGeorge syndrome and schizophrenia.",
+      X: "Chromosome X determines many sex-linked traits and disorders like hemophilia and Duchenne muscular dystrophy.",
+      Y: "Chromosome Y carries genes critical for male development and spermatogenesis."
+    };
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
+    const grid = document.getElementById('chromosome-grid');
+    [...Array(22).keys()].map(i => i + 1).concat(['X', 'Y']).forEach(ch => {
+      const div = document.createElement('div');
+      div.className = 'chromosome-item';
+      div.innerHTML = `
+        <img src="https://img.icons8.com/ios-filled/100/dna-helix.png" alt="Chr ${ch}" onclick="showInfo('${ch}')">
+        <div style="margin-top: 5px;">Chr ${ch}</div>
+      `;
+      grid.appendChild(div);
+    });
 
-  const chromosomeInfo = {
-    '1': 'Chromosome 1 is the largest human chromosome and contains over 2000 genes.',
-    // Add chromosome 2–23 data here
-  };
-
-  function showInfo(chrom) {
-    document.getElementById('dialogTitle').innerText = 'Chromosome ' + chrom;
-    document.getElementById('dialogContent').innerText = chromosomeInfo[chrom] || 'Information not available.';
-    document.getElementById('chromosomeDialog').showModal();
-    document.getElementById('popupSound').play();
-  }
-</script>
+    function showInfo(chrom) {
+      document.getElementById('dialogTitle').innerText = `Chromosome ${chrom}`;
+      document.getElementById('dialogContent').innerText = chromosomeInfo[chrom];
+      document.getElementById('chromosomeDialog').showModal();
+    }
+  </script>
 
 <footer style="text-align:center; margin-top: 50px; padding: 20px; background-color: rgba(0,0,0,0.7); font-size: 0.9em;">
   <p>&copy; 2025 Prisha Vora. All rights reserved. | <a href="index.html" style="color:#00bfff;">Home</a></p>
