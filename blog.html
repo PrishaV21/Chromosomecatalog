@@ -137,19 +137,7 @@
   <a href="resume.html" id="resumeLink">📄 Resume</a>
   <a href="contact.html" id="contactLink">📬 Contact</a>
 </div>
-<script>
-  function toggleMenu() {
-    var menu = document.getElementById("sidebar");
-    menu.classList.toggle("open");
-  }
-  window.onload = function() {
-    const path = window.location.pathname;
-    if (path.includes('resume')) document.getElementById('resumeLink').classList.add('active');
-    else if (path.includes('contact')) document.getElementById('contactLink').classList.add('active');
-    else if (path.includes('blog')) document.getElementById('blogLink').classList.add('active');
-    else document.getElementById('homeLink').classList.add('active');
-  };
-</script>
+
 
   <div class="container">
     <h1>Prisha's Research and Thoughts on Chromosomes</h1>
@@ -159,56 +147,19 @@
       <img src="https://img.icons8.com/ios-filled/100/dna-helix.png" alt="DNA 3"/>
     </div>
 
-    <form onsubmit="addEntry(event)">
-      <label>Date:</label>
-      <input type="date" id="entryDate" required>
-      <label>Tags (comma-separated):</label>
-      <input type="text" id="entryTags" placeholder="e.g. chromosome 5, trisomy">
-      <label>Your Thoughts:</label>
-      <textarea id="entryText" placeholder="Write your research or thoughts here..." required></textarea>
-      <button type="submit">Add Entry</button>
-    </form>
+    
 
-    <div id="entries"></div>
+    <div id="entries">
+
+<div class="entry">
+  <strong>Date:</strong> June 27, 2025<br/>
+  <p>Today marks the beginning of something special—my very first day creating this website. I've always dreamed of building a place to share my thoughts, research, and love for science. This summer, I finally made the time to bring that dream to life.</p>
+</div>
+
+</div>
   </div>
 
-  <script>
-    const entryBox = document.getElementById("entries");
-
-    function loadEntries() {
-      const data = JSON.parse(localStorage.getItem("prishaBlog") || "[]");
-      entryBox.innerHTML = '';
-      data.reverse().forEach(entry => {
-        const div = document.createElement("div");
-        div.className = "entry";
-        div.innerHTML = "<strong>Date:</strong> " + entry.date +
-                        "<div class='tags'><strong>Tags:</strong> " + (entry.tags || 'None') + "</div>" +
-                        "<p>" + entry.text + "</p>";
-        entryBox.appendChild(div);
-      });
-    }
-
-    function addEntry(event) {
-      event.preventDefault();
-      const date = document.getElementById('entryDate').value;
-      const text = document.getElementById('entryText').value;
-      const tags = document.getElementById('entryTags').value;
-
-      if (date && text) {
-        const newEntry = { date, text, tags };
-        const existing = JSON.parse(localStorage.getItem("prishaBlog") || "[]");
-        existing.push(newEntry);
-        localStorage.setItem("prishaBlog", JSON.stringify(existing));
-        loadEntries();
-
-        document.getElementById('entryDate').value = '';
-        document.getElementById('entryText').value = '';
-        document.getElementById('entryTags').value = '';
-      }
-    }
-
-    window.onload = loadEntries;
-  </script>
+  
 
   <footer style="text-align:center; margin-top: 50px; padding: 20px; background-color: rgba(0,0,0,0.7); font-size: 0.9em;">
     <p>&copy; 2025 Prisha Vora. All rights reserved. | <a href="index.html" style="color:#00bfff;">Home</a></p>
