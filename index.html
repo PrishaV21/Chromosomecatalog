@@ -272,8 +272,7 @@
 
 <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
 <div class="sidebar" id="sidebar">
-  <a href="index.html" id="homeLink">🏠 Home</a>
-  <a href="blog.html" id="blogLink">📝 Prisha's Blog</a>
+    <a href="blog.html" id="blogLink">📝 Prisha's Blog</a>
   <a href="resume.html" id="resumeLink">📄 Resume</a>
   <a href="contact.html" id="contactLink">📬 Contact</a>
 </div>
@@ -313,24 +312,18 @@
 
 
   
+
 <div class="container" data-aos="fade-up">
   <h1>The Blueprint</h1>
   <p class="description">Learn about the function of each of the 23 chromosomes we possess and the mutations and diseases pertaining to each chromosome.</p>
-  
-<div class="tabs" style="text-align:center; margin-top: 10px;">
-  <button onclick="location.href='index.html'" style="margin: 5px;">Home</button>
-  <button onclick="location.href='blog.html'" style="margin: 5px;">Blog</button>
-  <button onclick="location.href='resume.html'" style="margin: 5px;">Resume</button>
-  <button onclick="location.href='contact.html'" style="margin: 5px;">Contact</button>
-</div>
-
-<div class="chromosome-grid" id="chromosome-grid"></div>
+  <div class="chromosome-grid" id="chromosome-grid"></div>
   <dialog id="chromosomeDialog">
     <button class="close-btn" onclick="document.getElementById('chromosomeDialog').close()">Close</button>
     <h2 id="dialogTitle"></h2>
     <p id="dialogContent"></p>
   </dialog>
 </div>
+
 <script>
   const chromosomeInfo = {
     1: "Chromosome 1 is the largest and holds genes linked to Alzheimer's, breast cancer, and hearing loss.",
@@ -377,6 +370,7 @@
     document.getElementById('chromosomeDialog').showModal();
   }
 </script>
+
 
 <footer style="text-align:center; margin-top: 50px; padding: 20px; background-color: rgba(0,0,0,0.7); font-size: 0.9em;">
     <p>&copy; 2025 Prisha Vora. All rights reserved. | <a href="index.html" style="color:#00bfff;">Home</a></p>
