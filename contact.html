@@ -81,9 +81,86 @@
       cursor: pointer;
       display: none;
     }
-  </style>
+  
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  z-index: 1100;
+  cursor: pointer;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 220px;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+.sidebar a {
+  display: block;
+  color: #00bfff;
+  font-size: 1.1em;
+  margin: 15px 0;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+.sidebar a:hover, .sidebar a.active {
+  background-color: #007BFF;
+  color: white;
+}
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar.open {
+    display: block;
+  }
+  .container {
+    margin-left: 0 !important;
+  }
+}
+
+</style>
 </head>
 <body>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+<div class="sidebar" id="sidebar">
+  <a href="index.html" id="homeLink">🏠 Home</a>
+  <a href="blog.html" id="blogLink">📝 Prisha's Blog</a>
+  <a href="resume.html" id="resumeLink">📄 Resume</a>
+  <a href="contact.html" id="contactLink">📬 Contact</a>
+</div>
+<script>
+  function toggleMenu() {
+    var menu = document.getElementById("sidebar");
+    menu.classList.toggle("open");
+  }
+  window.onload = function() {
+    const path = window.location.pathname;
+    if (path.includes('resume')) document.getElementById('resumeLink').classList.add('active');
+    else if (path.includes('contact')) document.getElementById('contactLink').classList.add('active');
+    else if (path.includes('blog')) document.getElementById('blogLink').classList.add('active');
+    else document.getElementById('homeLink').classList.add('active');
+  };
+</script>
+
   <div class="container">
     <h1>About Prisha Vora</h1>
     <p>Prisha Vora is a high school scholar at <strong>Barrington High School</strong>. She is passionate about exploring the world of <strong>Genetics</strong> and <strong>Molecular Biology</strong>, and aims to pursue a career in <strong>Emergency Medicine</strong>.</p>
@@ -95,7 +172,7 @@
       <a href="mailto:prishavora21@gmail.com" title="Email">&#x2709;</a>
       <a href="https://www.linkedin.com" title="LinkedIn" target="_blank">&#x1F465;</a>
       <a href="https://github.com" title="GitHub" target="_blank">&#x1F5C3;</a>
-    <p><strong>View Resume:</strong> <a href="resume.html" style="color:#00bfff;">Resume</a></p>
+    
 </div>
 
     <form action="mailto:prishavora21@gmail.com" method="POST" enctype="text/plain">
@@ -108,7 +185,7 @@
       <textarea id="message" name="message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
-  <p><strong>View Resume:</strong> <a href="resume.html" style="color:#00bfff;">Resume</a></p>
+  
 </div>
 
   <button onclick="topFunction()" id="topBtn" title="Back to Top">⬆ Back to Top</button>
@@ -126,5 +203,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
+
+  <footer style="text-align:center; margin-top: 50px; padding: 20px; background-color: rgba(0,0,0,0.7); font-size: 0.9em;">
+    <p>&copy; 2025 Prisha Vora. All rights reserved. | <a href="index.html" style="color:#00bfff;">Home</a></p>
+  </footer>
+
 </body>
 </html>

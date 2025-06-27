@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="description" content="Explore the 23 human chromosomes with Prisha Vora's academic portfolio and blog. Learn about genetics, molecular biology, and pre-med interests.">
+  <meta name="keywords" content="chromosomes, genetics, molecular biology, prisha vora, high school scholar, pre-med, emergency medicine, Barrington High School">
+  <meta name="author" content="Prisha Vora">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Blueprint</title>
@@ -148,39 +152,118 @@
       }
     }
 
+
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  z-index: 1100;
+  cursor: pointer;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 220px;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+.sidebar a {
+  display: block;
+  color: #00bfff;
+  font-size: 1.1em;
+  margin: 15px 0;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+.sidebar a:hover, .sidebar a.active {
+  background-color: #007BFF;
+  color: white;
+}
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .sidebar {
+    display: none;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar.open {
+    display: block;
+  }
+  .container {
+    margin-left: 0 !important;
+  }
+}
+
+
+#loader {
+  position: fixed;
+  z-index: 2000;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000 url('https://i.gifer.com/YCZH.gif') no-repeat center center;
+  background-size: 100px 100px;
+}
+
 </style>
 </head>
 <body>
+<div id="loader"></div>
+<script>
+  window.addEventListener("load", function() {
+    const loader = document.getElementById("loader");
+    if (loader) loader.style.display = "none";
+  });
+</script>
+
+
+<div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
+<div class="sidebar" id="sidebar">
+  <a href="index.html" id="homeLink">🏠 Home</a>
+  <a href="blog.html" id="blogLink">📝 Prisha's Blog</a>
+  <a href="resume.html" id="resumeLink">📄 Resume</a>
+  <a href="contact.html" id="contactLink">📬 Contact</a>
+</div>
+<script>
+  function toggleMenu() {
+    var menu = document.getElementById("sidebar");
+    menu.classList.toggle("open");
+  }
+  window.onload = function() {
+    const path = window.location.pathname;
+    if (path.includes('resume')) document.getElementById('resumeLink').classList.add('active');
+    else if (path.includes('contact')) document.getElementById('contactLink').classList.add('active');
+    else if (path.includes('blog')) document.getElementById('blogLink').classList.add('active');
+    else document.getElementById('homeLink').classList.add('active');
+  };
+</script>
+
 
   
-  <div class="sidebar">
-    <a href="blog.html" id="blogLink">📝 Prisha's Blog</a>
-    <a href="resume.html" id="resumeLink">📄 Resume</a>
-    <a href="contact.html" id="contactLink">📬 Contact</a>
-  </div>
-  <script>
-    window.onload = function() {
-      const path = window.location.pathname;
-      if (path.includes('resume')) document.getElementById('resumeLink').classList.add('active');
-      else if (path.includes('contact')) document.getElementById('contactLink').classList.add('active');
-    };
-  </script>
+  
 
 
 
   
-  <div class="sidebar">
-    <a href="blog.html" id="blogLink">📝 Prisha's Blog</a>
-    <a href="resume.html" id="resumeLink">📄 Resume</a>
-    <a href="contact.html" id="contactLink">📬 Contact</a>
-  </div>
-  <script>
-    window.onload = function() {
-      const path = window.location.pathname;
-      if (path.includes('resume')) document.getElementById('resumeLink').classList.add('active');
-      else if (path.includes('contact')) document.getElementById('contactLink').classList.add('active');
-    };
-  </script>
+  
+
+
+  <footer style="text-align:center; margin-top: 50px; padding: 20px; background-color: rgba(0,0,0,0.7); font-size: 0.9em;">
+    <p>&copy; 2025 Prisha Vora. All rights reserved. | <a href="index.html" style="color:#00bfff;">Home</a></p>
+  </footer>
 
 </body>
 </html>
