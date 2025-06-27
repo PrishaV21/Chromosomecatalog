@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - Prisha Vora</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('chromo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+      text-shadow: 0 0 3px #000;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+    p, a {
+      font-size: 1.2em;
+      line-height: 1.6em;
+      color: #ffffff;
+    }
+    a {
+      color: #00bfff;
+    }
+    .social-icons {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      font-size: 1.5em;
+      color: #00bfff;
+      text-decoration: none;
+    }
+    form {
+      margin-top: 40px;
+    }
+    input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #topBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      font-size: 16px;
+      padding: 10px;
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>About Prisha Vora</h1>
+    <p>Prisha Vora is a high school scholar at <strong>Barrington High School</strong>. She is passionate about exploring the world of <strong>Genetics</strong> and <strong>Molecular Biology</strong>, and aims to pursue a career in <strong>Emergency Medicine</strong>.</p>
+    <p>Her curiosity about how our genetic makeup influences health and disease has led her to create this site — a comprehensive guide to the human chromosomes.</p>
+    <p>If you'd like to connect or learn more, feel free to reach out:</p>
+    <p><strong>Email:</strong> <a href="mailto:prishavora21@gmail.com">prishavora21@gmail.com</a></p>
+
+    <div class="social-icons">
+      <a href="mailto:prishavora21@gmail.com" title="Email">&#x2709;</a>
+      <a href="https://www.linkedin.com" title="LinkedIn" target="_blank">&#x1F465;</a>
+      <a href="https://github.com" title="GitHub" target="_blank">&#x1F5C3;</a>
+    <p><strong>View Resume:</strong> <a href="resume.html" style="color:#00bfff;">Resume</a></p>
+</div>
+
+    <form action="mailto:prishavora21@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="honeypot" style="display:none">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  <p><strong>View Resume:</strong> <a href="resume.html" style="color:#00bfff;">Resume</a></p>
+</div>
+
+  <button onclick="topFunction()" id="topBtn" title="Back to Top">⬆ Back to Top</button>
+
+  <script>
+    const topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    function topFunction() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
