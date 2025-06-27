@@ -105,7 +105,6 @@
       border-radius: 5px;
     }
 .menu-toggle {
-  display: none;
   position: fixed;
   top: 10px;
   left: 10px;
@@ -113,8 +112,12 @@
   color: white;
   padding: 10px 15px;
   border-radius: 5px;
-  z-index: 1100;
+  z-index: 9999; /* elevate even more */
   cursor: pointer;
+}
+.container {
+  position: relative;
+  z-index: 1;
 }
 .sidebar {
   position: fixed;
@@ -152,9 +155,6 @@
   }
   .sidebar.open {
     display: block;
-  }
-  .container {
-    margin-left: 0 !important;
   }
 }
 
