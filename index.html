@@ -266,29 +266,62 @@
   }
 }
 
+
+/* Dark Mode Theme */
+body.dark-mode {
+  background-color: #111 !important;
+  color: #eee !important;
+}
+body.dark-mode .container, body.dark-mode .sidebar {
+  background-color: rgba(30, 30, 30, 0.8) !important;
+}
+body.dark-mode a {
+  color: #80dfff !important;
+}
+.chromosome-item img {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.chromosome-item img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 12px #00bfff;
+}
+
+
+.sidebar {
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.sidebar.slide-in {
+  transform: translateX(0);
+}
+
 </style>
 </head>
 <body>
 
 <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
-<div class="sidebar" id="sidebar">
-    <a href="blog.html" id="blogLink">📝 Prisha's Blog</a>
-  <a href="resume.html" id="resumeLink">📄 Resume</a>
-  <a href="contact.html" id="contactLink">📬 Contact</a>
+
+<div class="sidebar slide-in" id="sidebar">
+  <a href="chromosomes.html" id="chromosomeLink">🧬 Blueprint</a>
+  <details><summary>📝 Blog</summary><a href="blog.html">Go to Blog</a></details>
+  <details><summary>📄 Resume</summary><a href="resume.html">See Resume</a></details>
+  <details><summary>📬 Contact</summary><a href="contact.html">Reach Out</a></details>
+</div>
+
+<div style="position: fixed; top: 10px; right: 10px; z-index: 999;">
+  <button onclick="toggleTheme()" style="padding: 6px 12px;">🌓 Toggle Theme</button>
 </div>
 <script>
   function toggleMenu() {
-    var menu = document.getElementById("sidebar");
-    menu.classList.toggle("open");
+    document.getElementById("sidebar").classList.toggle("open");
   }
-  window.onload = function() {
-    const path = window.location.pathname;
-    if (path.includes('resume')) document.getElementById('resumeLink').classList.add('active');
-    else if (path.includes('contact')) document.getElementById('contactLink').classList.add('active');
-    else if (path.includes('blog')) document.getElementById('blogLink').classList.add('active');
-    else document.getElementById('homeLink').classList.add('active');
-  };
+  function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+  }
 </script>
+
+
+
 
 <div id="loader"></div>
 <script>
@@ -313,63 +346,7 @@
 
   
 
-<div class="container" data-aos="fade-up">
-  <h1>The Blueprint</h1>
-  <p class="description">Learn about the function of each of the 23 chromosomes we possess and the mutations and diseases pertaining to each chromosome.</p>
-  <div class="chromosome-grid" id="chromosome-grid"></div>
-  <dialog id="chromosomeDialog">
-    <button class="close-btn" onclick="document.getElementById('chromosomeDialog').close()">Close</button>
-    <h2 id="dialogTitle"></h2>
-    <p id="dialogContent"></p>
-  </dialog>
-</div>
 
-<script>
-  const chromosomeInfo = {
-    1: "Chromosome 1 is the largest and holds genes linked to Alzheimer's, breast cancer, and hearing loss.",
-    2: "Chromosome 2 contains genes involved in developmental delay and immune disorders.",
-    3: "Chromosome 3 plays roles in cancer suppression and retinal development.",
-    4: "Chromosome 4 is linked with Huntington’s disease and skeletal abnormalities.",
-    5: "Chromosome 5 contains genes associated with spinal muscular atrophy and cleft palate.",
-    6: "Chromosome 6 holds the MHC region vital for immune response and autoimmune diseases.",
-    7: "Chromosome 7 includes genes linked to cystic fibrosis and Williams syndrome.",
-    8: "Chromosome 8 affects brain development and immune system genes.",
-    9: "Chromosome 9 contains ABO blood group genes and those linked to bladder cancer.",
-    10: "Chromosome 10 harbors genes for insulin production and neurodevelopment.",
-    11: "Chromosome 11 is associated with sickle cell disease and Wilms tumor.",
-    12: "Chromosome 12 includes genes involved in growth and some forms of diabetes.",
-    13: "Chromosome 13 includes the BRCA2 gene and is linked to retinoblastoma.",
-    14: "Chromosome 14 carries genes associated with early-onset Alzheimer's.",
-    15: "Chromosome 15 is tied to Angelman and Prader-Willi syndromes.",
-    16: "Chromosome 16 involves genes for kidney disorders and autism.",
-    17: "Chromosome 17 includes BRCA1 and genes for neurological disorders.",
-    18: "Chromosome 18 is linked to Edwards syndrome and congenital abnormalities.",
-    19: "Chromosome 19 is rich in genes related to lipid metabolism and immune function.",
-    20: "Chromosome 20 contains genes influencing diabetes and epilepsy.",
-    21: "Chromosome 21, the smallest, causes Down syndrome when triplicated.",
-    22: "Chromosome 22 is linked with DiGeorge syndrome and schizophrenia.",
-    X: "Chromosome X determines many sex-linked traits and disorders like hemophilia and Duchenne muscular dystrophy.",
-    Y: "Chromosome Y carries genes critical for male development and spermatogenesis."
-  };
-
-  const grid = document.getElementById('chromosome-grid');
-  if (grid) {
-    [...Array(22).keys()].map(i => i + 1).concat(['X', 'Y']).forEach(ch => {
-      const div = document.createElement('div');
-      div.className = 'chromosome-item';
-      div.innerHTML = `
-        <img src="https://img.icons8.com/ios-filled/100/dna-helix.png" alt="Chr ${ch}" onclick="showInfo('${ch}')">
-      `;
-      grid.appendChild(div);
-    });
-  }
-
-  function showInfo(chrom) {
-    document.getElementById('dialogTitle').innerText = `Chromosome ${chrom}`;
-    document.getElementById('dialogContent').innerText = chromosomeInfo[chrom];
-    document.getElementById('chromosomeDialog').showModal();
-  }
-</script>
 
 
 <footer style="text-align:center; margin-top: 50px; padding: 20px; background-color: rgba(0,0,0,0.7); font-size: 0.9em;">
